@@ -11,9 +11,11 @@ This action allows you to deploy using [Dpl](https://github.com/travis-ci/dpl).
 
 ## Outputs
 
-### `time`
+| Input          | Required  | Description                                      |
+| -------------- | --------- | ------------------------------------------------ |
+| `provider`  | `true`    |  The provider you want to deploy to. |
 
-The time we greeted you.
+Every provider has slightly different flags, which are documented in dpl repository. 
 
 ## Example 
 

@@ -10,18 +10,15 @@ const dpl = (params) => {
         return `--${key}='${params[key]}' `
     });
 
-    const cmd = `dpl ` + paramsString;
+    const cmd = `docker run tiagogouvea/dpl ` + paramsString;
     console.log("cmd", cmd);
 
     const r = execSync(cmd);
 
-    console.log(r);
+    console.log(r.toString());
 };
 
 console.log("Let's go");
-console.log("Check docker");
-const r = execSync("docker --version");
-console.log("r", r);
 
 let dplParams = {};
 dplParams.provider = core.getInput("provider");
