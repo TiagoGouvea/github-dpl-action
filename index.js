@@ -19,17 +19,19 @@ const dpl = (params) => {
 };
 
 console.log("Let's go");
+console.log("Check docker");
+const r = execSync("docker --version");
+console.log("r", r);
 
 let dplParams = {};
-dpl.provider = core.getInput("provider");
+dplParams.provider = core.getInput("provider");
 
-if (dpl.provider === 'heroku') {
-    dpl['api-key'] = core.getInput("api-key");
-    dpl.app = core.getInput("app");
+if (dplParams.provider === 'heroku') {
+    dplParams['api-key'] = core.getInput("api-key");
+    dplParams.app = core.getInput("app");
 }
 
 try {
-
     dpl(dplParams);
 
     core.setOutput(
