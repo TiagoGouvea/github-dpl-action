@@ -1,6 +1,6 @@
 # action.yml
 name: 'Dpl (dee-pee-ell)'
-description: 'Deploy using Dpl on GitHub Actions'
+description: 'Deploy using Dpl (dee-pee-ell) with GitHub Actions'
 branding:
   icon: "upload-cloud"
   color: "green"

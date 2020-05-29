@@ -1,12 +1,13 @@
-# Dpl GitHub Actions
+# Dpl (dee-pee-ell) GitHub Action
 
-This action prints "Hello World" or "Hello" + the name of a person to greet to the log.
+This action allows you to deploy using [Dpl](https://github.com/travis-ci/dpl).
+
+## Usage
+
 
 ## Inputs
 
-### `who-to-greet`
 
-**Required** The name of the person to greet. Default `"World"`.
 
 ## Outputs
 
@@ -14,8 +15,13 @@ This action prints "Hello World" or "Hello" + the name of a person to greet to t
 
 The time we greeted you.
 
-## Example usage
+## Example 
 
-uses: actions/hello-world-docker-action@v1
-with:
-  who-to-greet: 'Mona the Octocat'
+```
+- name: Dpl to heroku
+  uses: tiagogouvea/github-dpl-action@master
+  with:
+    provider: 'heroku'
+    app: "dev-finder-dev"
+    api-key: "66a593c4-0ad7-4e0e-a396-8685565c7ec9"
+```

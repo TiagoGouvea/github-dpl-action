@@ -1,16 +1,16 @@
 const core = require("@actions/core");
-const { execSync } = require("child_process");
+const {execSync} = require("child_process");
 
-const dpl = ({ params }) => {
+const dpl = (params) => {
 
-    console.log("params",params);
+    console.log("params", params);
 
     const keys = Object.keys(params);
-    const paramsString = keys.map(key=>{
+    const paramsString = keys.map(key => {
         return `--${key}='${params[key]}' `
     });
 
-    const cmd = `dpl `+paramsString;
+    const cmd = `dpl ` + paramsString;
     console.log("cmd", cmd);
 
     const r = execSync(cmd);
@@ -18,12 +18,14 @@ const dpl = ({ params }) => {
     console.log(r);
 };
 
-let dplParams = {}
-dpl.provider =  core.getInput("provider");
+console.log("Let's go");
 
-if (dpl.provider==='heroku'){
-    dpl.api_key = core.getInput("heroku_api_key");
-    dpl.api_key = core.getInput("heroku_api_key");
+let dplParams = {};
+dpl.provider = core.getInput("provider");
+
+if (dpl.provider === 'heroku') {
+    dpl['api-key'] = core.getInput("api-key");
+    dpl.app = core.getInput("app");
 }
 
 try {
