@@ -1,0 +1,26 @@
+# action.yml
+name: 'Dpl (dee-pee-ell)'
+description: 'Deploy using Dpl on GitHub Actions'
+inputs:
+  provider:
+    description: 'Sets the provider you want to deploy to'
+    required: true
+
+  app:
+    description: 'Heroku app name'
+    required: false
+
+  api-key:
+    description: 'Heroku API Key'
+    required: false
+
+outputs:
+  result: # id of output
+    description: 'The dpl result'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.provider }}
+    - ${{ inputs.app }}
+    - ${{ inputs.api-key }}
