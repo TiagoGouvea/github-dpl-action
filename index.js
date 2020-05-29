@@ -8,7 +8,7 @@ const dpl = (params) => {
     const keys = Object.keys(params);
     const paramsString = keys.map(key => {
         return `--${key}='${params[key]}' `
-    });
+    }).join('');
 
     const cmd = `docker run tiagogouvea/dpl ` + paramsString;
     console.log("cmd", cmd);
