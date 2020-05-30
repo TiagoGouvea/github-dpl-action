@@ -422,7 +422,7 @@ const dpl = (params, options) => {
     console.log(r.toString());
 };
 
-console.log("Let's go");
+console.log("Let's go 1");
 
 let dplParams = {};
 dplParams.provider = core.getInput("provider");
