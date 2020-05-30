@@ -10,7 +10,7 @@ const dpl = (params) => {
         return `--${key}='${params[key]}' `
     }).join('');
 
-    const cmd = `docker run tiagogouvea/dpl ` + paramsString;
+    const cmd = `docker run -v $(pwd):/tmp tiagogouvea/dpl ` + paramsString;
     console.log("cmd", cmd);
 
     const r = execSync(cmd);
