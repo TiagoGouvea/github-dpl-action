@@ -5,20 +5,28 @@ const {execSync} = require("child_process");
 const dplDockerTag = 'tiagogouvea/dpl:v1.10.15';
 
 const dpl = (params, options) => {
+
+    // Remove empty params
+    Object.keys(params).forEach((key) => (!params[key]) && delete params[key]);
+
+    // Create a single string with params
     const keys = Object.keys(params);
+    const paramsString = keys.map(key => `--${key}='${params[key]}' `).join('');
 
-    const paramsString = keys.map(key => {
-        if (params[key])
-            return `--${key}='${params[key]}' `;
-    }).join('');
-
+    // Create final docker command line
     const cmd = `docker run -v $(pwd)${options.base_dir}:/tmp ${dplDockerTag} ` + paramsString;
 
-    console.log("params", params);
+    // Log before start
+    console.log("params", params.filter());
     console.log("options", options);
     console.log("CMD command", cmd);
 
-    execSync(cmd);
+    // Run it
+    core.info("Running dpl command...")
+    const r = execSync(cmd);
+
+    // Show results
+    core.info("dpl results: " + r.toString());
 };
 
 // Construct dpl cmd params
