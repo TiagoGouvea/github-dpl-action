@@ -5,24 +5,33 @@ branding:
   icon: "upload-cloud"
   color: "green"
 inputs:
+  # General inputs
   provider:
     description: 'Sets the provider you want to deploy to'
     required: true
-
   base-dir:
     description: 'The path to start by'
     required: false
 
+  # Provider - Heroku
   app:
     description: 'Heroku app name'
     required: false
-
   api-key:
     description: 'Heroku API Key'
     required: false
+  strategy:
+    description: 'Deployment strategy for Dpl'
+    required: false
+  username:
+    description: 'heroku username. Not necessary if api-key is used. Requires git strategy.'
+    required: false
+  password:
+    description: 'heroku password. Not necessary if api-key is used. Requires git strategy.'
+    required: false
 
 outputs:
-  result: # id of output
+  result:
     description: 'The dpl result'
 runs:
   using: "node12"

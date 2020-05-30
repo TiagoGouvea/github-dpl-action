@@ -17,7 +17,7 @@ RUN apk add --no-cache \
   curl \
   git
 
-RUN gem install dpl
+RUN gem install dpl -v 1.8.47
 
 WORKDIR /tmp
 
