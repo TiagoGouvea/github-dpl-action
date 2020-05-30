@@ -9,6 +9,10 @@ inputs:
     description: 'Sets the provider you want to deploy to'
     required: true
 
+  base-dir:
+    description: 'The path to start by'
+    required: false
+
   app:
     description: 'Heroku app name'
     required: false
