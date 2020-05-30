@@ -436,7 +436,7 @@ let options = {};
 options.base_dir = core.getInput("base-dir");
 
 try {
-    dpl(dplParams);
+    dpl(dplParams, options);
 
     core.setOutput(
         "status",

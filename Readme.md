@@ -14,6 +14,7 @@ This action allows you to deploy using [Dpl](https://github.com/travis-ci/dpl).
 | Input          | Required  | Description                                      |
 | -------------- | --------- | ------------------------------------------------ |
 | `provider`  | `true`    |  The provider you want to deploy to. |
+| `base-dir`  | `false`    |  Relative folder from root to mount, could be some like "api" |
 
 Every provider has slightly different flags, which are documented in dpl repository. 
 
