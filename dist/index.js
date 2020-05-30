@@ -420,7 +420,7 @@ const dpl = (params, options) => {
     const cmd = `docker run -v $(pwd)${options.base_dir}:/tmp ${dplDockerTag} ` + paramsString;
 
     // Log before start
-    console.log("params", params.filter());
+    console.log("params", params);
     console.log("options", options);
     console.log("CMD command", cmd);
 
