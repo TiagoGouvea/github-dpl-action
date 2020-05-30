@@ -2,10 +2,11 @@ const core = require("@actions/core");
 const {execSync} = require("child_process");
 
 // Docker container to use
-const dplDockerTag = 'tiagogouvea/dpl:v1.8.47';
+const dplDockerTag = 'tiagogouvea/dpl:v1.10.15';
 
 const dpl = (params, options) => {
     const keys = Object.keys(params);
+
     const paramsString = keys.map(key => {
         if (params[key])
             return `--${key}='${params[key]}' `;
@@ -15,7 +16,7 @@ const dpl = (params, options) => {
 
     console.log("params", params);
     console.log("options", options);
-    console.log("cmd", cmd);
+    console.log("CMD command", cmd);
 
     execSync(cmd);
 };
