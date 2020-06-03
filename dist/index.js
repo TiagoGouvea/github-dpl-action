@@ -1587,6 +1587,7 @@ function isUnixExecutable(stats) {
 /***/ (function(__unusedmodule, __unusedexports, __webpack_require__) {
 
 const core = __webpack_require__(304);
+// const {execSync} = require("child_process");
 const exec = __webpack_require__(550);
 
 // Docker container to use
@@ -1602,7 +1603,7 @@ const dpl = async (params, options) => {
     const paramsString = keys.map(key => `--${key}='${params[key]}' `).join('');
 
     // Create final docker command line
-    const cmd = `docker run -v ~/${options.base_dir}:/tmp ${dplDockerTag} ` + paramsString;
+    const cmd = `docker run -v $(pwd)${options.base_dir}:/tmp ${dplDockerTag} ` + paramsString;
 
     // Log before start
     core.debug("paramsL " + JSON.stringify(params));
@@ -1612,6 +1613,8 @@ const dpl = async (params, options) => {
     // Run it
     core.info("Running dpl command...");
     await exec.exec(cmd);
+
+    // execSync(cmd);
 
     // Show results
     // core.info("dpl results: " + r.toString());
