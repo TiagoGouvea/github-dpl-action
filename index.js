@@ -1,5 +1,5 @@
 const core = require("@actions/core");
-// const {execSync} = require("child_process");
+const {execSync} = require("child_process");
 const exec = require("@actions/exec");
 
 // Docker container to use
@@ -23,10 +23,11 @@ const dpl = async (params, options) => {
     core.debug("CMD command: " + cmd);
 
     // Run it
-    core.info("Running dpl command...");
-    await exec.exec(cmd);
+    // core.info("Running dpl command - exec.exec...");
+    // await exec.exec(cmd);
 
-    // execSync(cmd);
+    core.info("Running dpl command - execSync...");
+    execSync(cmd);
 
     // Show results
     // core.info("dpl results: " + r.toString());

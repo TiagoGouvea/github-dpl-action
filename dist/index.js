@@ -1587,7 +1587,7 @@ function isUnixExecutable(stats) {
 /***/ (function(__unusedmodule, __unusedexports, __webpack_require__) {
 
 const core = __webpack_require__(304);
-// const {execSync} = require("child_process");
+const {execSync} = __webpack_require__(129);
 const exec = __webpack_require__(550);
 
 // Docker container to use
@@ -1611,10 +1611,11 @@ const dpl = async (params, options) => {
     core.debug("CMD command: " + cmd);
 
     // Run it
-    core.info("Running dpl command...");
-    await exec.exec(cmd);
+    // core.info("Running dpl command - exec.exec...");
+    // await exec.exec(cmd);
 
-    // execSync(cmd);
+    core.info("Running dpl command - execSync...");
+    execSync(cmd);
 
     // Show results
     // core.info("dpl results: " + r.toString());
