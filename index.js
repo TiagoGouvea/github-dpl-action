@@ -14,7 +14,7 @@ const dpl = async (params, options) => {
     const paramsString = keys.map(key => `--${key}='${params[key]}' `).join('');
 
     // Create final docker command line
-    const cmd = `docker run -v $(pwd)${options.base_dir}:/tmp ${dplDockerTag} ` + paramsString;
+    const cmd = `docker run -v ~/${options.base_dir}:/tmp ${dplDockerTag} ` + paramsString;
 
     // Log before start
     core.debug("paramsL " + JSON.stringify(params));
