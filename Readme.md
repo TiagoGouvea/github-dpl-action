@@ -18,6 +18,7 @@ If you want a new provider, open your PR adding the provider params to [action.y
 | -------------- | --------- | ------------------------------------------------ |
 | `provider`  | `true`    |  The provider you want to deploy to. |
 | `base-dir`  | `false`    |  Relative folder from root to mount, could be some like "api" |
+| `skip_cleanup` | `false`   |  Prevent from resetting your working directory and deleting all changes made during the build.  |
 
 Every provider has slightly different flags, which are documented in [dpl repository](https://github.com/travis-ci/dpl/blob/v1/README.md).
 

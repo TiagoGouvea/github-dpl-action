@@ -12,6 +12,9 @@ inputs:
   base-dir:
     description: 'The path to start by'
     required: false
+  skip_cleanup:
+    description: 'Prevent from resetting your working directory and deleting all changes made during the build'
+    required: false
 
   # Provider - Heroku
   app:
@@ -29,6 +32,7 @@ inputs:
   password:
     description: 'heroku password. Not necessary if api-key is used. Requires git strategy.'
     required: false
+
 
 outputs:
   result:

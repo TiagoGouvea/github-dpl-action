@@ -443,6 +443,7 @@ if (dplParams.provider === 'heroku') {
     dplParams.strategy = core.getInput("strategy");
     dplParams.username = core.getInput("username");
     dplParams.password = core.getInput("password");
+    dplParams.skip_cleanup = core.getInput("skip_cleanup");
 }
 
 // Additional options (not dpl options)
