@@ -1,10 +1,10 @@
 const core = require("@actions/core");
-const {execSync} = require("child_process");
+const exec = require('@actions/exec');
 
 // Docker container to use
 const dplDockerTag = 'tiagogouvea/dpl:v1.10.15';
 
-const dpl = (params, options) => {
+const dpl = async (params, options) => {
 
     // Remove empty params
     Object.keys(params).forEach((key) => (!params[key]) && delete params[key]);
@@ -17,16 +17,17 @@ const dpl = (params, options) => {
     const cmd = `docker run -v $(pwd)${options.base_dir}:/tmp ${dplDockerTag} ` + paramsString;
 
     // Log before start
-    console.log("params", params);
-    console.log("options", options);
-    console.log("CMD command", cmd);
+    core.debug("paramsL " + JSON.stringify(params));
+    core.debug("options: " + JSON.stringify(options));
+    core.debug("CMD command: " + cmd);
 
     // Run it
-    core.info("Running dpl command...")
-    const r = execSync(cmd);
+    core.info("Running dpl command...");
+    await exec.exec(cmd);
 
     // Show results
-    core.info("dpl results: " + r.toString());
+    // core.info("dpl results: " + r.toString());
+    core.info("dpl succeed 🎉");
 };
 
 // Construct dpl cmd params
@@ -47,15 +48,15 @@ if (dplParams.provider === 'heroku') {
 let options = {};
 options.base_dir = core.getInput("base-dir");
 
-try {
-    // Dpl
-    dpl(dplParams, options);
-
-    // If no errors, we will be here
+// Dpl
+dpl(dplParams, options).then(r => {
+    // No Errors
     core.setOutput(
         "result",
         "Successfully deployed"
     );
-} catch (err) {
+}).catch(err=>{
+    // :(
+    core.info("dpl failed 😞");
     core.setFailed(err.toString());
-}
+});
