@@ -1,0 +1,9 @@
+{
+  "name": "github-dpl-action",
+  "version": "1.0.0",
+  "dependencies": {},
+  "devDependencies": {
+    "@actions/core": "^1.2.4",
+    "@actions/exec": "^1.0.4"
+  }
+}
