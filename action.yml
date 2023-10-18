@@ -1,42 +1,41 @@
 # action.yml
-name: 'Dpl (dee-pee-ell)'
-description: 'Deploy using Dpl (dee-pee-ell) with GitHub Actions'
+name: "Dpl (dee-pee-ell)"
+description: "Deploy using Dpl (dee-pee-ell) with GitHub Actions"
 branding:
   icon: "upload-cloud"
   color: "green"
 inputs:
   # General inputs
   provider:
-    description: 'Sets the provider you want to deploy to'
+    description: "Sets the provider you want to deploy to"
     required: true
   base-dir:
-    description: 'The path to start by'
+    description: "The path to start by"
     required: false
   skip_cleanup:
-    description: 'Prevent from resetting your working directory and deleting all changes made during the build'
+    description: "Prevent from resetting your working directory and deleting all changes made during the build"
     required: false
 
   # Provider - Heroku
   app:
-    description: 'Heroku app name'
+    description: "Heroku app name"
     required: false
   api-key:
-    description: 'Heroku API Key'
+    description: "Heroku API Key"
     required: false
   strategy:
-    description: 'Deployment strategy for Dpl'
+    description: "Deployment strategy for Dpl"
     required: false
   username:
-    description: 'heroku username. Not necessary if api-key is used. Requires git strategy.'
+    description: "heroku username. Not necessary if api-key is used. Requires git strategy."
     required: false
   password:
-    description: 'heroku password. Not necessary if api-key is used. Requires git strategy.'
+    description: "heroku password. Not necessary if api-key is used. Requires git strategy."
     required: false
-
 
 outputs:
   result:
-    description: 'The dpl result'
+    description: "The dpl result"
 runs:
-  using: "node12"
+  using: "node16"
   main: "dist/index.js"
